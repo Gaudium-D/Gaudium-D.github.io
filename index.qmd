@@ -1,7 +1,14 @@
 ---
-title: "DSCI 521 MILESTONE2"
+title: "Duzhi Wu"
 ---
 
-This is a Quarto website.
+![](images/Chizuru_Hishiro2.jpg){width=250px}
+
+Hello everyone, this is Duzhi Wu, and you can call me David.
+I am from China, while I have my undergraduation study in Canada. 
+I was studying in McMaster University, major in Computer Science and minor in Statistics. 
+The reason why I choose data science as the program of my graduation study is because I am not interested in just coding. 
+I love to analyze a group of data and to make a prediction of something might happen, with known of the probability calculation. 
+Though data cannot totally make a decision for me, it at least can approximately show me a way. 
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

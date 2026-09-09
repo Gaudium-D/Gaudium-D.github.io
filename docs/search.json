@@ -1,16 +1,30 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DSCI 521 MILESTONE2",
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Orientation day on campus."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nDuzhi Wu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "About this site ##Background: I grew up in China before 18, and then I came to Canada for my undergraduation study. Before come to MDS, I was just an undergraduation student in McMaster Unversity, and worked as an Test Engineer intern in a game company for 1 year.##\n##Why data science: This is because thie program can properly combine my learning in undergraduation study together, which is Computer Science and Statistics. What’s more, I am very interested in analyzing data with a scientific method. And this method can be applied into lots of scenarios in working.##\n##Hobbies: I love running, playing footballs, and playing video games, such as Valorant, RainbowSix Seige, Stardew Valley and some other games.##"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Duzhi Wu",
+    "section": "",
+    "text": "Hello everyone, this is Duzhi Wu, and you can call me David. I am from China, while I have my undergraduation study in Canada. I was studying in McMaster University, major in Computer Science and minor in Statistics. The reason why I choose data science as the program of my graduation study is because I am not interested in just coding. I love to analyze a group of data and to make a prediction of something might happen, with known of the probability calculation. Though data cannot totally make a decision for me, it at least can approximately show me a way.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   }
 ]
