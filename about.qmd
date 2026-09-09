@@ -2,9 +2,11 @@
 title: "About"
 ---
 
-About this site
-##Background: I grew up in China before 18, and then I came to Canada for my undergraduation study. Before come to MDS, I was just an undergraduation student in McMaster Unversity, and worked as an Test Engineer intern in a game company for 1 year.##
+## Background
+I grew up in China before 18, and then I came to Canada for my undergraduation study. Before come to MDS, I was just an undergraduation student in McMaster Unversity, and worked as an Test Engineer intern in a game company for 1 year.
 
-##Why data science: This is because thie program can properly combine my learning in undergraduation study together, which is Computer Science and Statistics. What's more, I am very interested in analyzing data with a scientific method. And this method can be applied into lots of scenarios in working.##
+## Why Data Science
+This is because thie program can properly combine my learning in undergraduation study together, which is Computer Science and Statistics. What's more, I am very interested in analyzing data with a scientific method. And this method can be applied into lots of scenarios in working.
 
-##Hobbies: I love running, playing footballs, and playing video games, such as Valorant, RainbowSix Seige, Stardew Valley and some other games.##
+## Hobbies
+I love running, playing footballs, and playing video games, such as Valorant, RainbowSix Seige, Stardew Valley and some other games.
