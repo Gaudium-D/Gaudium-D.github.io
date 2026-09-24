@@ -1,0 +1,21 @@
+---
+title: "Penguin Body Mass Analysis"
+author: "Duzhi Wu"
+date: "2026-09-23"
+format: html
+---
+
+## Introduction
+
+This post explores differences in body mass across penguin species.
+
+Data source: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/).
+
+```{r}
+#| message: false
+#| warning: false
+
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+```
