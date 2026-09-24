@@ -1,3 +1,4 @@
+
 ---
 title: "Penguin Body Mass Analysis"
 author: "Duzhi Wu"
@@ -7,9 +8,15 @@ format: html
 
 ## Introduction
 
-This post explores differences in body mass across penguin species.
+In this post, we explore how body mass differs across three penguin species: Adelie, Chinstrap, and Gentoo.
 
-Data source: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/).
+The dataset comes from the [Palmer Penguins project](https://allisonhorst.github.io/palmerpenguins/)
+
+The Palmer Penguins dataset is distributed under the CC0 license.
+
+## Chunk 1: Load Data
+
+First, we load the R packages required for our analysis.
 
 ```{r}
 #| message: false
@@ -18,4 +25,74 @@ Data source: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/).
 library(palmerpenguins)
 library(dplyr)
 library(ggplot2)
+
+data("penguins")
+
+head(penguins)
 ```
+
+The dataset contains measurements such as body mass, bill length, flipper length, species, and island.
+
+## Chunk 2: Clean data
+
+Before calculating summary statistics, we remove observations with missing species or body mass values.
+
+```{r}
+penguins_clean <- penguins |>
+  filter(
+    !is.na(species),
+    !is.na(body_mass_g)
+  )
+
+cat("Original observations:", nrow(penguins), "\n")
+cat("Clean observations:", nrow(penguins_clean), "\n")
+```
+
+Removing missing values ensures that our body mass calculations use observations with valid measurements.
+
+## Chunk 3: Calculate statistics
+
+Next, we group the observations by species and calculate the number of penguins, mean body mass, and standard deviation of body mass.
+
+```{r}
+penguin_summary <- penguins_clean |>
+  group_by(species) |>
+  summarise(
+    count = n(),
+    mean_body_mass = mean(body_mass_g),
+    sd_body_mass = sd(body_mass_g),
+    .groups = "drop"
+  )
+
+penguin_summary
+```
+
+These summary statistics allow us to compare the typical body mass and variability across the three species.
+
+## Chunk 4: Visualization
+
+We use a boxplot to compare the distribution of body mass across penguin species.
+
+```{r}
+#| label: fig-penguin-mass
+#| fig-cap: "Distribution of body mass across three penguin species."
+#| fig-width: 8
+#| fig-height: 5
+
+ggplot(
+  penguins_clean,
+  aes(x = species, y = body_mass_g, fill = species)
+) +
+  geom_boxplot() +
+  labs(
+    title = "Penguin Body Mass by Species",
+    x = "Penguin Species",
+    y = "Body Mass (g)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+The boxplot shows differences in the body mass distributions across species.
+
+In conclusion, our analysis shows that Gentoo penguins have a higher average body mass than Adelie and Chinstrap penguins.

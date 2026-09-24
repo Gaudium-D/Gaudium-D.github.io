@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "posts/penguin-analysis/index.html",
+    "href": "posts/penguin-analysis/index.html",
+    "title": "Penguin Body Mass Analysis",
+    "section": "",
+    "text": "In this post, we explore how body mass differs across three penguin species: Adelie, Chinstrap, and Gentoo.\nThe dataset comes from the Palmer Penguins project\nThe Palmer Penguins dataset is distributed under the CC0 license."
+  },
+  {
+    "objectID": "posts/penguin-analysis/index.html#introduction",
+    "href": "posts/penguin-analysis/index.html#introduction",
+    "title": "Penguin Body Mass Analysis",
+    "section": "",
+    "text": "In this post, we explore how body mass differs across three penguin species: Adelie, Chinstrap, and Gentoo.\nThe dataset comes from the Palmer Penguins project\nThe Palmer Penguins dataset is distributed under the CC0 license."
+  },
+  {
+    "objectID": "posts/penguin-analysis/index.html#chunk-1-load-data",
+    "href": "posts/penguin-analysis/index.html#chunk-1-load-data",
+    "title": "Penguin Body Mass Analysis",
+    "section": "Chunk 1: Load Data",
+    "text": "Chunk 1: Load Data\nFirst, we load the R packages required for our analysis.\n\nlibrary(palmerpenguins)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(\"penguins\")\n\nhead(penguins)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nThe dataset contains measurements such as body mass, bill length, flipper length, species, and island."
+  },
+  {
+    "objectID": "posts/penguin-analysis/index.html#chunk-2-clean-data",
+    "href": "posts/penguin-analysis/index.html#chunk-2-clean-data",
+    "title": "Penguin Body Mass Analysis",
+    "section": "Chunk 2: Clean data",
+    "text": "Chunk 2: Clean data\nBefore calculating summary statistics, we remove observations with missing species or body mass values.\n\npenguins_clean &lt;- penguins |&gt;\n  filter(\n    !is.na(species),\n    !is.na(body_mass_g)\n  )\n\ncat(\"Original observations:\", nrow(penguins), \"\\n\")\n\nOriginal observations: 344 \n\ncat(\"Clean observations:\", nrow(penguins_clean), \"\\n\")\n\nClean observations: 342 \n\n\nRemoving missing values ensures that our body mass calculations use observations with valid measurements."
+  },
+  {
+    "objectID": "posts/penguin-analysis/index.html#chunk-3-calculate-statistics",
+    "href": "posts/penguin-analysis/index.html#chunk-3-calculate-statistics",
+    "title": "Penguin Body Mass Analysis",
+    "section": "Chunk 3: Calculate statistics",
+    "text": "Chunk 3: Calculate statistics\nNext, we group the observations by species and calculate the number of penguins, mean body mass, and standard deviation of body mass.\n\npenguin_summary &lt;- penguins_clean |&gt;\n  group_by(species) |&gt;\n  summarise(\n    count = n(),\n    mean_body_mass = mean(body_mass_g),\n    sd_body_mass = sd(body_mass_g),\n    .groups = \"drop\"\n  )\n\npenguin_summary\n\n# A tibble: 3 × 4\n  species   count mean_body_mass sd_body_mass\n  &lt;fct&gt;     &lt;int&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n1 Adelie      151          3701.         459.\n2 Chinstrap    68          3733.         384.\n3 Gentoo      123          5076.         504.\n\n\nThese summary statistics allow us to compare the typical body mass and variability across the three species."
+  },
+  {
+    "objectID": "posts/penguin-analysis/index.html#chunk-4-visualization",
+    "href": "posts/penguin-analysis/index.html#chunk-4-visualization",
+    "title": "Penguin Body Mass Analysis",
+    "section": "Chunk 4: Visualization",
+    "text": "Chunk 4: Visualization\nWe use a boxplot to compare the distribution of body mass across penguin species.\n\nggplot(\n  penguins_clean,\n  aes(x = species, y = body_mass_g, fill = species)\n) +\n  geom_boxplot() +\n  labs(\n    title = \"Penguin Body Mass by Species\",\n    x = \"Penguin Species\",\n    y = \"Body Mass (g)\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\nFigure 1: Distribution of body mass across three penguin species.\n\n\n\n\n\nThe boxplot shows differences in the body mass distributions across species.\nIn conclusion, our analysis shows that Gentoo penguins have a higher average body mass than Adelie and Chinstrap penguins."
+  },
+  {
     "objectID": "posts/first-weeks/index.html",
     "href": "posts/first-weeks/index.html",
     "title": "My first weeks in MDS",
@@ -11,7 +53,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nDuzhi Wu\n\n\n\n\n\nNo matching items"
+    "text": "Iris Petal Length Analysis\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nDuzhi Wu\n\n\n\n\n\n\n\n\n\n\n\n\nPenguin Body Mass Analysis\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nDuzhi Wu\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nDuzhi Wu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -47,5 +89,47 @@
     "title": "Duzhi Wu",
     "section": "",
     "text": "Hello everyone, this is Duzhi Wu, and you can call me David. I am from China, while I have my undergraduation study in Canada. I was studying in McMaster University, major in Computer Science and minor in Statistics. The reason why I choose data science as the program of my graduation study is because I am not interested in just coding. I love to analyze a group of data and to make a prediction of something might happen, with known of the probability calculation. Though data cannot totally make a decision for me, it at least can approximately show me a way.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html",
+    "href": "posts/iris-analysis/index.html",
+    "title": "Iris Petal Length Analysis",
+    "section": "",
+    "text": "In this post, we investigate how petal length differs across three Iris species: Setosa, Versicolor, and Virginica. The dataset is available through scikit-learn’s Iris dataset."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html#introduction",
+    "href": "posts/iris-analysis/index.html#introduction",
+    "title": "Iris Petal Length Analysis",
+    "section": "",
+    "text": "In this post, we investigate how petal length differs across three Iris species: Setosa, Versicolor, and Virginica. The dataset is available through scikit-learn’s Iris dataset."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html#chunk-1-load-data",
+    "href": "posts/iris-analysis/index.html#chunk-1-load-data",
+    "title": "Iris Petal Length Analysis",
+    "section": "Chunk 1: Load data",
+    "text": "Chunk 1: Load data\nFirst, we import the Python libraries required for our analysis.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import load_iris\n\niris = load_iris(as_frame=True)\n\niris_df = iris.frame.copy()\n\niris_df[\"species\"] = iris_df[\"target\"].map(\n    dict(enumerate(iris.target_names))\n)\n\niris_df.head()\n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\ntarget\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n0\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\n0\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\n0\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\n0\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\n0\nsetosa\n\n\n\n\n\n\n\nThe dataset contains measurements of sepal length, sepal width, petal length, and petal width."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html#chunk-2-clean-data",
+    "href": "posts/iris-analysis/index.html#chunk-2-clean-data",
+    "title": "Iris Petal Length Analysis",
+    "section": "Chunk 2: Clean data",
+    "text": "Chunk 2: Clean data\nBefore analyzing petal length, we check for missing values and remove observations with missing petal length or species information.\n\nmissing_values = iris_df.isna().sum()\n\nprint(\"Missing values:\")\nprint(missing_values)\n\niris_clean = iris_df.dropna(\n    subset=[\"petal length (cm)\", \"species\"]\n).copy()\n\nprint(\"Original observations:\", len(iris_df))\nprint(\"Clean observations:\", len(iris_clean))\n\nMissing values:\nsepal length (cm)    0\nsepal width (cm)     0\npetal length (cm)    0\npetal width (cm)     0\ntarget               0\nspecies              0\ndtype: int64\nOriginal observations: 150\nClean observations: 150\n\n\nChecking for missing values helps us ensure that the summary statistics are based on valid observations."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html#chunk-3-calculate-statistics",
+    "href": "posts/iris-analysis/index.html#chunk-3-calculate-statistics",
+    "title": "Iris Petal Length Analysis",
+    "section": "Chunk 3: Calculate statistics",
+    "text": "Chunk 3: Calculate statistics\nNext, we group the observations by species and calculate the mean and standard deviation of petal length.\n\niris_summary = (\n    iris_clean\n    .groupby(\"species\")[\"petal length (cm)\"]\n    .agg(\n        count=\"count\",\n        mean_petal_length=\"mean\",\n        sd_petal_length=\"std\"\n    )\n    .reset_index()\n)\n\niris_summary\n\n\n\n\n\n\n\n\nspecies\ncount\nmean_petal_length\nsd_petal_length\n\n\n\n\n0\nsetosa\n50\n1.462\n0.173664\n\n\n1\nversicolor\n50\n4.260\n0.469911\n\n\n2\nvirginica\n50\n5.552\n0.551895\n\n\n\n\n\n\n\nThese statistics allow us to compare the typical petal length and variability among the three Iris species."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html#chunk-4-visualization",
+    "href": "posts/iris-analysis/index.html#chunk-4-visualization",
+    "title": "Iris Petal Length Analysis",
+    "section": "Chunk 4: Visualization",
+    "text": "Chunk 4: Visualization\nWe use a boxplot to compare the distribution of petal length across the three species.\n\nspecies_names = [\n    \"setosa\",\n    \"versicolor\",\n    \"virginica\"\n]\n\npetal_lengths = [\n    iris_clean.loc[\n        iris_clean[\"species\"] == species,\n        \"petal length (cm)\"\n    ]\n    for species in species_names\n]\n\nfig, ax = plt.subplots(figsize=(8, 5))\n\nax.boxplot(\n    petal_lengths,\n    tick_labels=species_names\n)\n\nax.set_title(\"Iris Petal Length by Species\")\nax.set_xlabel(\"Iris Species\")\nax.set_ylabel(\"Petal Length (cm)\")\n\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Distribution of petal length across three Iris species.\n\n\n\n\n\nThe boxplot illustrates differences in the distribution of petal length across species. We can compare the median, spread, and potential outliers for each species.\nIn conclusion, our analysis shows that Iris setosa has the shortest average petal length, while Iris virginica has the longest average petal length among the three species."
   }
 ]

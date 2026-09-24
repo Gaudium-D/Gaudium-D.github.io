@@ -1,0 +1,121 @@
+
+---
+title: "Iris Petal Length Analysis"
+author: "Duzhi Wu"
+date: "2026-09-23"
+format: html
+jupyter: python3
+---
+
+## Introduction
+
+In this post, we investigate how petal length differs across three Iris species: Setosa, Versicolor, and Virginica.
+The dataset is available through [scikit-learn's Iris dataset](https://scikit-learn.org/stable/datasets/toy_dataset.html#iris-plants-dataset).
+
+## Chunk 1: Load data
+
+First, we import the Python libraries required for our analysis.
+
+```{python}
+#| warning: false
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+iris = load_iris(as_frame=True)
+
+iris_df = iris.frame.copy()
+
+iris_df["species"] = iris_df["target"].map(
+    dict(enumerate(iris.target_names))
+)
+
+iris_df.head()
+```
+
+The dataset contains measurements of sepal length, sepal width, petal length, and petal width.
+
+## Chunk 2: Clean data
+
+Before analyzing petal length, we check for missing values and remove observations with missing petal length or species information.
+
+```{python}
+missing_values = iris_df.isna().sum()
+
+print("Missing values:")
+print(missing_values)
+
+iris_clean = iris_df.dropna(
+    subset=["petal length (cm)", "species"]
+).copy()
+
+print("Original observations:", len(iris_df))
+print("Clean observations:", len(iris_clean))
+```
+
+Checking for missing values helps us ensure that the summary statistics are based on valid observations.
+
+## Chunk 3: Calculate statistics
+
+Next, we group the observations by species and calculate the mean and standard deviation of petal length.
+
+```{python}
+iris_summary = (
+    iris_clean
+    .groupby("species")["petal length (cm)"]
+    .agg(
+        count="count",
+        mean_petal_length="mean",
+        sd_petal_length="std"
+    )
+    .reset_index()
+)
+
+iris_summary
+```
+
+These statistics allow us to compare the typical petal length and variability among the three Iris species.
+
+## Chunk 4: Visualization
+
+We use a boxplot to compare the distribution of petal length across the three species.
+
+```{python}
+#| label: fig-iris-petal-length
+#| fig-cap: "Distribution of petal length across three Iris species."
+#| fig-width: 8
+#| fig-height: 5
+
+species_names = [
+    "setosa",
+    "versicolor",
+    "virginica"
+]
+
+petal_lengths = [
+    iris_clean.loc[
+        iris_clean["species"] == species,
+        "petal length (cm)"
+    ]
+    for species in species_names
+]
+
+fig, ax = plt.subplots(figsize=(8, 5))
+
+ax.boxplot(
+    petal_lengths,
+    tick_labels=species_names
+)
+
+ax.set_title("Iris Petal Length by Species")
+ax.set_xlabel("Iris Species")
+ax.set_ylabel("Petal Length (cm)")
+
+plt.show()
+```
+
+The boxplot illustrates differences in the distribution of petal length across species.
+We can compare the median, spread, and potential outliers for each species.
+
+In conclusion, our analysis shows that Iris setosa has the shortest average petal length, while Iris virginica has the longest average petal length among the three species.
