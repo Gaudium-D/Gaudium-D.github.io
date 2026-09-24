@@ -179,7 +179,6 @@ Gaudium-D.github.io/
 ├── .python-version
 ├── renv.lock
 ├── .Rprofile
-├── .Rhistory
 ├── renv/
 │   └── activate.R
 ├── posts/

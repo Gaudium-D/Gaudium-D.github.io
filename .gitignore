@@ -5,3 +5,5 @@
 _site/
 .DS_Store
 .venv/
+.Rproj.user
+.Rhistory
