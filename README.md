@@ -86,6 +86,14 @@ Once the environment has been restored, verify its status:
 renv::status()
 ```
 
+Exit the R console:
+
+```r
+q()
+```
+
+If prompted to save the workspace, select "No".
+
 
 ### 4. Render the website
 
