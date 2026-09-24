@@ -23,6 +23,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 
+
+
 iris = load_iris(as_frame=True)
 
 iris_df = iris.frame.copy()
@@ -119,3 +121,13 @@ The boxplot illustrates differences in the distribution of petal length across s
 We can compare the median, spread, and potential outliers for each species.
 
 In conclusion, our analysis shows that Iris setosa has the shortest average petal length, while Iris virginica has the longest average petal length among the three species.
+
+## Python Environment
+
+The following code shows the Python interpreter used to execute this analysis.
+
+```{python}
+import sys
+
+print(sys.executable)
+```

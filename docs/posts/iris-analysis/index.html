@@ -168,6 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#chunk-2-clean-data" id="toc-chunk-2-clean-data" class="nav-link" data-scroll-target="#chunk-2-clean-data">Chunk 2: Clean data</a></li>
   <li><a href="#chunk-3-calculate-statistics" id="toc-chunk-3-calculate-statistics" class="nav-link" data-scroll-target="#chunk-3-calculate-statistics">Chunk 3: Calculate statistics</a></li>
   <li><a href="#chunk-4-visualization" id="toc-chunk-4-visualization" class="nav-link" data-scroll-target="#chunk-4-visualization">Chunk 4: Visualization</a></li>
+  <li><a href="#python-environment" id="toc-python-environment" class="nav-link" data-scroll-target="#python-environment">Python Environment</a></li>
   </ul>
 </nav>
     </div>
@@ -212,20 +213,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="chunk-1-load-data" class="level2">
 <h2 class="anchored" data-anchor-id="chunk-1-load-data">Chunk 1: Load data</h2>
 <p>First, we import the Python libraries required for our analysis.</p>
-<div id="aea5c8ea" class="cell" data-execution_count="1">
+<div id="a817af3b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris(as_frame<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>iris_df <span class="op">=</span> iris.frame.copy()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris(as_frame<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>iris_df[<span class="st">"species"</span>] <span class="op">=</span> iris_df[<span class="st">"target"</span>].<span class="bu">map</span>(</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(<span class="bu">enumerate</span>(iris.target_names))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>iris_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>iris_df <span class="op">=</span> iris.frame.copy()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>iris_df[<span class="st">"species"</span>] <span class="op">=</span> iris_df[<span class="st">"target"</span>].<span class="bu">map</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(<span class="bu">enumerate</span>(iris.target_names))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>iris_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -299,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="chunk-2-clean-data" class="level2">
 <h2 class="anchored" data-anchor-id="chunk-2-clean-data">Chunk 2: Clean data</h2>
 <p>Before analyzing petal length, we check for missing values and remove observations with missing petal length or species information.</p>
-<div id="f100a20c" class="cell" data-execution_count="2">
+<div id="a324c04c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>missing_values <span class="op">=</span> iris_df.isna().<span class="bu">sum</span>()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values:"</span>)</span>
@@ -329,7 +332,7 @@ Clean observations: 150</code></pre>
 <section id="chunk-3-calculate-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="chunk-3-calculate-statistics">Chunk 3: Calculate statistics</h2>
 <p>Next, we group the observations by species and calculate the mean and standard deviation of petal length.</p>
-<div id="a11fa3ea" class="cell" data-execution_count="3">
+<div id="92b91f2c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>iris_summary <span class="op">=</span> (</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    iris_clean</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"species"</span>)[<span class="st">"petal length (cm)"</span>]</span>
@@ -431,6 +434,18 @@ Figure&nbsp;1: Distribution of petal length across three Iris species.
 </div>
 <p>The boxplot illustrates differences in the distribution of petal length across species. We can compare the median, spread, and potential outliers for each species.</p>
 <p>In conclusion, our analysis shows that Iris setosa has the shortest average petal length, while Iris virginica has the longest average petal length among the three species.</p>
+</section>
+<section id="python-environment" class="level2">
+<h2 class="anchored" data-anchor-id="python-environment">Python Environment</h2>
+<p>The following code shows the Python interpreter used to execute this analysis.</p>
+<div id="5cb568f1" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.executable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>D:\UBC\521\milestone2\Gaudium-D.github.io\.venv\Scripts\python.exe</code></pre>
+</div>
+</div>
 
 
 </section>

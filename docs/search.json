@@ -109,7 +109,7 @@
     "href": "posts/iris-analysis/index.html#chunk-1-load-data",
     "title": "Iris Petal Length Analysis",
     "section": "Chunk 1: Load data",
-    "text": "Chunk 1: Load data\nFirst, we import the Python libraries required for our analysis.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import load_iris\n\niris = load_iris(as_frame=True)\n\niris_df = iris.frame.copy()\n\niris_df[\"species\"] = iris_df[\"target\"].map(\n    dict(enumerate(iris.target_names))\n)\n\niris_df.head()\n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\ntarget\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n0\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\n0\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\n0\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\n0\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\n0\nsetosa\n\n\n\n\n\n\n\nThe dataset contains measurements of sepal length, sepal width, petal length, and petal width."
+    "text": "Chunk 1: Load data\nFirst, we import the Python libraries required for our analysis.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.datasets import load_iris\n\n\n\niris = load_iris(as_frame=True)\n\niris_df = iris.frame.copy()\n\niris_df[\"species\"] = iris_df[\"target\"].map(\n    dict(enumerate(iris.target_names))\n)\n\niris_df.head()\n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\ntarget\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n0\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\n0\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\n0\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\n0\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\n0\nsetosa\n\n\n\n\n\n\n\nThe dataset contains measurements of sepal length, sepal width, petal length, and petal width."
   },
   {
     "objectID": "posts/iris-analysis/index.html#chunk-2-clean-data",
@@ -131,5 +131,12 @@
     "title": "Iris Petal Length Analysis",
     "section": "Chunk 4: Visualization",
     "text": "Chunk 4: Visualization\nWe use a boxplot to compare the distribution of petal length across the three species.\n\nspecies_names = [\n    \"setosa\",\n    \"versicolor\",\n    \"virginica\"\n]\n\npetal_lengths = [\n    iris_clean.loc[\n        iris_clean[\"species\"] == species,\n        \"petal length (cm)\"\n    ]\n    for species in species_names\n]\n\nfig, ax = plt.subplots(figsize=(8, 5))\n\nax.boxplot(\n    petal_lengths,\n    tick_labels=species_names\n)\n\nax.set_title(\"Iris Petal Length by Species\")\nax.set_xlabel(\"Iris Species\")\nax.set_ylabel(\"Petal Length (cm)\")\n\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Distribution of petal length across three Iris species.\n\n\n\n\n\nThe boxplot illustrates differences in the distribution of petal length across species. We can compare the median, spread, and potential outliers for each species.\nIn conclusion, our analysis shows that Iris setosa has the shortest average petal length, while Iris virginica has the longest average petal length among the three species."
+  },
+  {
+    "objectID": "posts/iris-analysis/index.html#python-environment",
+    "href": "posts/iris-analysis/index.html#python-environment",
+    "title": "Iris Petal Length Analysis",
+    "section": "Python Environment",
+    "text": "Python Environment\nThe following code shows the Python interpreter used to execute this analysis.\n\nimport sys\n\nprint(sys.executable)\n\nD:\\UBC\\521\\milestone2\\Gaudium-D.github.io\\.venv\\Scripts\\python.exe"
   }
 ]
